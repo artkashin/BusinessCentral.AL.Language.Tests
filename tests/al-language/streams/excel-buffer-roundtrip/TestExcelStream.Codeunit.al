@@ -33,7 +33,7 @@ codeunit 69048 "STR Excel Stream Test"
         Reader.OpenBookStream(Input, 'Probe');
         Reader.ReadSheet();
         Reader.Get(1, 1);
-        if Reader."Cell Value as Text" <> 'EXCEL-PROBE-42' then
+        if Reader."Cell Value as Text" <> 'MUTATION-MISSING' then
             Error('Expected EXCEL-PROBE-42, got %1.', Reader."Cell Value as Text");
         Reader.CloseBook();
     end;

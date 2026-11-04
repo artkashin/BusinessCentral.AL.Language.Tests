@@ -20,7 +20,7 @@ codeunit 69026 "TPG Empty Host Test"
         Host.OpenView();
         if Host.Lines.First() then
             Error('Expected no stored line below the empty host.');
-        if StrPos(Host.Caption(), 'Runner Repro Header') = 0 then
+        if StrPos(Host.Caption(), 'MUTATION-MISSING') = 0 then
             Error('Expected the opened host caption, got %1.', Host.Caption());
         Host.Close();
     end;

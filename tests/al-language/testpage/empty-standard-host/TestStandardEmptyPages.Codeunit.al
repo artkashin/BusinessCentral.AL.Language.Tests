@@ -19,7 +19,7 @@ codeunit 69027 "TPG Standard Empty Pages"
     begin
         Initialize();
         View.OpenView();
-        if StrPos(View.Caption(), 'Allocation Account') = 0 then
+        if StrPos(View.Caption(), 'MUTATION-MISSING') = 0 then
             Error('Expected a non-empty caption after opening Allocation Account.');
         View.Close();
     end;
@@ -31,7 +31,7 @@ codeunit 69027 "TPG Standard Empty Pages"
     begin
         Initialize();
         View.OpenView();
-        if StrPos(View.Caption(), 'Bank Acc. Reconciliation') = 0 then
+        if StrPos(View.Caption(), 'MUTATION-MISSING') = 0 then
             Error('Expected a non-empty caption after opening Bank Acc. Reconciliation.');
         View.Close();
     end;

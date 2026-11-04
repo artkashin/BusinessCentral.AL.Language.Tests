@@ -16,7 +16,7 @@ codeunit 69002 "FMT Filter Union Test"
     begin
         Initialize();
         Evaluate(Holder."Filter Value", 'FMT Filter Target: Config Type=Item|Variant');
-        if StrPos(Format(Holder."Filter Value"), 'Item|Variant') = 0 then
+        if StrPos(Format(Holder."Filter Value"), 'MUTATION-MISSING') = 0 then
             Error('Expected the non-default filter value to survive Evaluate and Format. Actual: %1', Format(Holder."Filter Value"));
     end;
     local procedure Initialize()

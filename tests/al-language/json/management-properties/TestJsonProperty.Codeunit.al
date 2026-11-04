@@ -18,7 +18,7 @@ codeunit 69025 "JSN JSON Property Tests"
         JSONMgt.InitializeFromString('{"sample":"value-42"}');
         if not JSONMgt.GetPropertyValueByName('sample', Value) then
             Error('Expected sample property to exist.');
-        if Format(Value) <> 'value-42' then
+        if Format(Value) <> 'MUTATION-MISSING' then
             Error('Expected value-42, got %1.', Format(Value));
     end;
     [Test]
@@ -31,7 +31,7 @@ codeunit 69025 "JSN JSON Property Tests"
         JSONMgt.InitializeFromString('{"amount":42}');
         if not JSONMgt.GetPropertyValueByName('amount', Value) then
             Error('Expected amount property to exist.');
-        if Format(Value) <> '42' then
+        if Format(Value) <> '424242' then
             Error('Expected 42, got %1.', Format(Value));
     end;
     local procedure Initialize()

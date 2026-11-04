@@ -18,7 +18,7 @@ codeunit 69008 "PAG Factbox Move Test"
     begin
         Initialize();
         View.OpenView();
-        View.Description.AssertEquals('Non-default layout value');
+        View.Description.AssertEquals('MUTATION-MISSING');
         View.Close();
     end;
     local procedure Initialize()

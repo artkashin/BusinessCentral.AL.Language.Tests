@@ -30,7 +30,7 @@ codeunit 69001 "FMT Filter Page Test"
                 TargetField.SetFilter(FilterFields."Field Filter");
             until FilterFields.Next() = 0;
         TargetField := TargetRef.Field(Target.FieldNo("Employee No."));
-        if TargetField.GetFilter() <> '<>XYZ' then
+        if TargetField.GetFilter() <> '<>MUTATION' then
             Error('Expected employee exclusion <>XYZ, got %1.', TargetField.GetFilter());
         TargetRef.Close();
     end;
