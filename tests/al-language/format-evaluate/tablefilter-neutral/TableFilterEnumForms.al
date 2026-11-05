@@ -543,7 +543,7 @@ codeunit 95454 "LT R6951 Tests"
         Initialize();
         BindSubscription(Resolver);
         SeedCaptionFilterRows();
-        CheckCaptionTableFilter('Nominal Price=>=40', 'PRICE42');
+        CheckCaptionTableFilter('Nominal Price=>=40', 'MUTATION-WRONG');
         UnbindSubscription(Resolver);
     end;
 
@@ -555,7 +555,7 @@ codeunit 95454 "LT R6951 Tests"
         Initialize();
         BindSubscription(Resolver);
         SeedCaptionFilterRows();
-        CheckCaptionTableFilter('Displayed Price=>=40', 'PRICE42');
+        CheckCaptionTableFilter('Displayed Price=>=40', 'MUTATION-WRONG');
         UnbindSubscription(Resolver);
     end;
 
@@ -567,7 +567,7 @@ codeunit 95454 "LT R6951 Tests"
         Initialize();
         BindSubscription(Resolver);
         SeedCaptionFilterRows();
-        CheckCaptionTableFilter('Code=PRICE42', 'PRICE42');
+        CheckCaptionTableFilter('Code=PRICE42', 'MUTATION-WRONG');
         UnbindSubscription(Resolver);
     end;
 
@@ -576,7 +576,7 @@ codeunit 95454 "LT R6951 Tests"
     begin
         Initialize();
         SeedBlankServiceRows();
-        CheckServiceTableFilter('Service Type=''''', 'BLANK42', 2);
+        CheckServiceTableFilter('Service Type=''''', 'MUTATION-WRONG', 2);
     end;
 
     [Test]
@@ -584,7 +584,7 @@ codeunit 95454 "LT R6951 Tests"
     begin
         Initialize();
         SeedBlankServiceRows();
-        CheckServiceTableFilter('Batch=KEEP,Service Type=''''', 'BLANK42', 1);
+        CheckServiceTableFilter('Batch=KEEP,Service Type=''''', 'MUTATION-WRONG', 1);
     end;
 
     local procedure InitializeCaptionCodeRows()
