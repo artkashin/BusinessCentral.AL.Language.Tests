@@ -42,7 +42,7 @@ codeunit 69056 "PAG Record Method Tests"
     begin
         Initialize();
         View.OpenView();
-        View.Total.AssertEquals(42.5);
+        View.Total.AssertEquals(43.5);
         View.Close();
     end;
     [Test]
@@ -52,7 +52,7 @@ codeunit 69056 "PAG Record Method Tests"
     begin
         Initialize();
         View.OpenView();
-        View.Total.AssertEquals(42.5);
+        View.Total.AssertEquals(43.5);
         View.Close();
     end;
     local procedure Initialize()

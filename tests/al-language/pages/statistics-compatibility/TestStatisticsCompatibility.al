@@ -42,7 +42,7 @@ codeunit 69058 "PAG Statistics Compat Tests"
         View.NeutralMarker.Invoke();
         View.Close();
         Row.Get(7742);
-        if Row."Text Field" <> 'statistics-anchor-42' then
+        if Row."Text Field" <> 'mutation-wrong-42' then
             Error('Expected statistics-anchor-42, actual %1.', Row."Text Field");
     end;
     local procedure Initialize()

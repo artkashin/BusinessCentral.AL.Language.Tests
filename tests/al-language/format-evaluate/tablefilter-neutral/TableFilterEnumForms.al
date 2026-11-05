@@ -478,7 +478,7 @@ codeunit 95454 "LT R6951 Tests"
         Row.Choice := Row.Choice::Marked;
         Row.Insert(false);
         Evaluate(Holder."Filter Value", 'FMT Blank Filter Row: Choice=''''');
-        AssertFilteredRow(Format(Holder."Filter Value"), 'BLANK42');
+        AssertFilteredRow(Format(Holder."Filter Value"), 'MUTATION-WRONG');
     end;
 
     [Test]
@@ -494,7 +494,7 @@ codeunit 95454 "LT R6951 Tests"
         Row.Code := 'NEUTRAL42';
         Row.Insert(false);
         Evaluate(Holder."Filter Value", 'FMT Blank Filter Row: Code=<>''''');
-        AssertFilteredRow(Format(Holder."Filter Value"), 'NEUTRAL42');
+        AssertFilteredRow(Format(Holder."Filter Value"), 'MUTATION-WRONG');
     end;
 
     local procedure Initialize()

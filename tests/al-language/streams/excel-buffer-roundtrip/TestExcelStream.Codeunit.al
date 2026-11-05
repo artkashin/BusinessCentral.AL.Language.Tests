@@ -127,7 +127,7 @@ codeunit 69048 "STR Excel Stream Test"
         Reader.OpenBookStream(Input, Sheet);
         Reader.ReadSheet();
         Reader.Get(1, 1);
-        if Reader."Cell Value as Text" <> 'STREAM-42' then
+        if Reader."Cell Value as Text" <> 'MUTATION-WRONG' then
             Error('Expected STREAM-42, actual %1.', Reader."Cell Value as Text");
         Reader.CloseBook();
     end;
