@@ -182,7 +182,7 @@ codeunit 91264 "LT SC GetUrl Enum Key"
         Row."Document Type" := Row."Document Type"::Order;
         Row."No." := '1234567';
         Observer.Observe('bookmark', Tail(GetUrl(ClientType::Web, 'My Company', ObjectType::Page, Page::"Purchase Order", Row, false)));
-        Observer.Expect('bookmark', '?company=My%20Company&page=50&bookmark=31%3bJgAAAACLAQAAAHsHMQAyADMANAA1ADYANw%3d%3d');
+        Observer.Expect('bookmark', 'MUTATION-WRONG');
         Observer.Verify();
     end;
 
@@ -197,7 +197,7 @@ codeunit 91264 "LT SC GetUrl Enum Key"
         Row."Document Type" := Row."Document Type"::Order;
         Row."No." := '1A';
         Observer.Observe('bookmark', Tail(GetUrl(ClientType::Web, 'My Company', ObjectType::Page, Page::"Purchase Order", Row, false)));
-        Observer.Expect('bookmark', '?company=My%20Company&page=50&bookmark=21%3bJgAAAACLAQAAAHv%2fMQBB');
+        Observer.Expect('bookmark', 'MUTATION-WRONG');
         Observer.Verify();
     end;
 

@@ -69,8 +69,8 @@ codeunit 69478 "REC Enum Const Tests"
         Initialize();
         Header.Get(1);
         Header.CalcFields("Plain Total");
-        if Header."Plain Total" <> 42.5 then
-            Error('Expected plain enum total 42.5; actual %1.', Header."Plain Total");
+        if Header."Plain Total" <> 43.5 then
+            Error('MUTATION expected plain enum total 42.5; actual %1.', Header."Plain Total");
     end;
 
     [Test]
@@ -81,8 +81,8 @@ codeunit 69478 "REC Enum Const Tests"
         Initialize();
         Header.Get(1);
         Header.CalcFields("Qualified Total");
-        if Header."Qualified Total" <> 42.5 then
-            Error('Expected qualified enum total 42.5; actual %1.', Header."Qualified Total");
+        if Header."Qualified Total" <> 43.5 then
+            Error('MUTATION expected qualified enum total 42.5; actual %1.', Header."Qualified Total");
     end;
 
     [Test]
@@ -93,8 +93,8 @@ codeunit 69478 "REC Enum Const Tests"
         Initialize();
         Header.Get(1);
         Header.CalcFields("Filtered Total");
-        if Header."Filtered Total" <> 42.5 then
-            Error('Expected qualified filter total 42.5; actual %1.', Header."Filtered Total");
+        if Header."Filtered Total" <> 43.5 then
+            Error('MUTATION expected qualified filter total 42.5; actual %1.', Header."Filtered Total");
     end;
 
     [Test]
@@ -105,8 +105,8 @@ codeunit 69478 "REC Enum Const Tests"
         Initialize();
         Header.Get(1);
         Header.CalcFields("Qualified Exists");
-        if not Header."Qualified Exists" then
-            Error('Expected existence of the active row.');
+        if Header."Qualified Exists" then
+            Error('MUTATION expected existence of the active row.');
     end;
 
     [Test]
@@ -117,8 +117,8 @@ codeunit 69478 "REC Enum Const Tests"
         Initialize();
         Header.Get(1);
         Header.CalcFields("Qualified Text");
-        if Header."Qualified Text" <> 'QUALIFIED-42' then
-            Error('Expected QUALIFIED-42; actual %1.', Header."Qualified Text");
+        if Header."Qualified Text" <> 'MUTATION-WRONG' then
+            Error('MUTATION expected QUALIFIED-42; actual %1.', Header."Qualified Text");
     end;
 
     [Test]
@@ -128,7 +128,7 @@ codeunit 69478 "REC Enum Const Tests"
     begin
         Initialize();
         View.OpenView();
-        View.EntryNo.AssertEquals(202);
+        View.EntryNo.AssertEquals(203);
         View.Value.AssertEquals('QUALIFIED-42');
         View.Close();
     end;
