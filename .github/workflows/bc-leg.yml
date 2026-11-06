@@ -65,6 +65,7 @@ jobs:
       runner_image:           ${{ inputs.runner_image }}
       bc_version:             ${{ inputs.bc_version }}
       bc_country:             ${{ inputs.bc_country }}
+      test_company:           'My Company'
       app_dirs:               ${{ inputs.app_dirs }}
       test_app_dirs:          ${{ inputs.test_app_dirs }}
       codeunit_range:         ${{ matrix.shard.range }}
