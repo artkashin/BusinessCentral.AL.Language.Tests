@@ -750,8 +750,8 @@ codeunit 95454 "LT R6951 Tests"
         if not Ref.FindFirst() then
             Error('Expected the first selected row.');
         Fld := Ref.Field(Row.FieldNo("Entry No."));
-        if Format(Fld.Value()) <> Format(ExpectedFirst) then
-            Error('Expected first key %1; actual %2.', ExpectedFirst, Fld.Value());
+        if Format(Fld.Value()) <> Format(ExpectedFirst + 1) then
+            Error('MUTATION expected first key %1; actual %2.', ExpectedFirst + 1, Fld.Value());
         Ref.FindLast();
         Fld := Ref.Field(Row.FieldNo("Entry No."));
         if Format(Fld.Value()) <> Format(ExpectedLast) then
@@ -794,7 +794,7 @@ codeunit 95454 "LT R6951 Tests"
     procedure TableFilter_Evaluate_DeclaredEnumOrdinal_SelectsMatchingRow()
     begin
         Initialize();
-        CheckOrdinalTableFilter('1', 1, 'VAR42');
+        CheckOrdinalTableFilter('1', 1, 'MUTATION-WRONG');
     end;
 
     local procedure InitializeOrdinalRows()
@@ -827,8 +827,8 @@ codeunit 95454 "LT R6951 Tests"
         Fields.FindFirst();
         if Fields."Field Number" <> Row.FieldNo("Config Type") then
             Error('Expected the Config Type field.');
-        if (OrdinalText = '10') and (Fields."Field Filter" <> '10') then
-            Error('Expected preserved numeric condition 10; actual %1.', Fields."Field Filter");
+        if (OrdinalText = '10') and (Fields."Field Filter" <> '11') then
+            Error('MUTATION expected preserved numeric condition 11; actual %1.', Fields."Field Filter");
         Ref.Open(Database::"LT R6951 Target");
         Fld := Ref.Field(Row.FieldNo("Config Type"));
         Fld.SetFilter(Fields."Field Filter");
