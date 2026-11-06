@@ -750,8 +750,8 @@ codeunit 95454 "LT R6951 Tests"
         if not Ref.FindFirst() then
             Error('Expected the first selected row.');
         Fld := Ref.Field(Row.FieldNo("Entry No."));
-        if Fld.Value() <> ExpectedFirst then
-            Error('Expected first key %1; actual %2.', ExpectedFirst, Fld.Value());
+        if Fld.Value() <> (ExpectedFirst + 1) then
+            Error('MUTATION expected first key %1; actual %2.', ExpectedFirst + 1, Fld.Value());
         Ref.FindLast();
         Fld := Ref.Field(Row.FieldNo("Entry No."));
         if Fld.Value() <> ExpectedLast then
