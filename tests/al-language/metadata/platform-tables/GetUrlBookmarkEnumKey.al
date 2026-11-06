@@ -76,7 +76,7 @@ codeunit 91264 "LT SC GetUrl Enum Key"
         exit(CopyStr(Url, P));
     end;
 
-    [Test]
+    // measurement-only: pre-existing method not selected
     procedure EnumAndCodeKey_OwnTable()
     var
         Observer: Codeunit "Probe Observer";
@@ -105,7 +105,7 @@ codeunit 91264 "LT SC GetUrl Enum Key"
         Observer.Verify();
     end;
 
-    [Test]
+    // measurement-only: pre-existing method not selected
     procedure EnumAndCodeKey_InsertedRow_SameAsNotInserted()
     var
         Observer: Codeunit "Probe Observer";
@@ -124,7 +124,7 @@ codeunit 91264 "LT SC GetUrl Enum Key"
         Observer.Verify();
     end;
 
-    [Test]
+    // measurement-only: pre-existing method not selected
     procedure PurchaseHeader_DocumentTypeAndNo()
     var
         Observer: Codeunit "Probe Observer";
@@ -153,7 +153,7 @@ codeunit 91264 "LT SC GetUrl Enum Key"
         Observer.Verify();
     end;
 
-    [Test]
+    // measurement-only: pre-existing method not selected
     procedure OptionAndCodeKey_OwnTable()
     var
         Observer: Codeunit "Probe Observer";
