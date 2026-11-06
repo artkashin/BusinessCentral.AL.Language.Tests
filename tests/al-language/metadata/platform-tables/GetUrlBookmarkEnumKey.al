@@ -183,7 +183,7 @@ codeunit 91264 "LT SC GetUrl Enum Key"
         Row."Document Type" := Row."Document Type"::Order;
         Row."No." := '1234567';
         ActualUrl := Tail(GetUrl(ClientType::Web, 'My Company', ObjectType::Page, Page::"Purchase Order", Row, false));
-        ExpectedUrl := '?company=My%20Company&page=50&bookmark=31%3bJgAAAACLAQAAAAJ7BzEAMgAzADQANQA2ADc%3d';
+        ExpectedUrl := 'MUTATION-WRONG';
         if ActualUrl <> ExpectedUrl then
             Error('Expected native bookmark URL %1; actual %2.', ExpectedUrl, ActualUrl);
     end;
@@ -200,7 +200,7 @@ codeunit 91264 "LT SC GetUrl Enum Key"
         Row."Document Type" := Row."Document Type"::Order;
         Row."No." := '1A';
         ActualUrl := Tail(GetUrl(ClientType::Web, 'My Company', ObjectType::Page, Page::"Purchase Order", Row, false));
-        ExpectedUrl := '?company=My%20Company&page=50&bookmark=21%3bJgAAAACLAQAAAAJ7%2fzEAQQ%3d%3d';
+        ExpectedUrl := 'MUTATION-WRONG';
         if ActualUrl <> ExpectedUrl then
             Error('Expected native bookmark URL %1; actual %2.', ExpectedUrl, ActualUrl);
     end;
