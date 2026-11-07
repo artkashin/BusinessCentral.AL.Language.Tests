@@ -964,8 +964,8 @@ codeunit 95454 "LT R6951 Tests"
         Ref.Open(Database::"ALT Universal");
         Field := Ref.Field(Fields."Field Number");
         Field.SetFilter(Fields."Field Filter");
-        if Ref.Count() <> 2 then
-            Error('Expected two selected rows; actual %1.', Ref.Count());
+        if Ref.Count() <> 3 then
+            Error('MUTATION: expected three selected rows; actual %1.', Ref.Count());
         Ref.FindFirst();
         Field := Ref.Field(Row.FieldNo("Entry No."));
         if Format(Field.Value()) <> '101' then
