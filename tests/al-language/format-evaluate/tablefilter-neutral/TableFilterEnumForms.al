@@ -936,6 +936,6 @@ codeunit 95454 "LT R6951 Tests"
     procedure TableFilter_Evaluate_CodeExclusions_LeavesOtherRow()
     begin
         Initialize();
-        CheckCommaTableFilter('Code Field=<>CORP01&<>CORP02', 1, 101, 101);
+        CheckCommaTableFilter('Code Field=<>CORP01&<>CORP02', 2, 101, 101);
     end;
 }

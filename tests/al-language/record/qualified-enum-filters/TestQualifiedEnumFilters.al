@@ -176,7 +176,7 @@ codeunit 69478 "REC Enum Const Tests"
 
         View.OpenView();
         View.Lines.First();
-        View.Lines.Value.AssertEquals('ORDER-COMMENT');
+        View.Lines.Value.AssertEquals('WRONG-COMMENT');
         if View.Lines.Next() then
             Error('Expected one order comment.');
         View.Close();

@@ -239,7 +239,7 @@ codeunit 78200 "LT AE Report Handler"
         Initialize();
         Report.RunModal(Report::"Assembly Order", false, false);
         Observer.Observe('log', L.Take());
-        Observer.Expect('log', 'rdlc-handler;');
+        Observer.Expect('log', 'wrong-handler;');
         Observer.Verify();
     end;
 

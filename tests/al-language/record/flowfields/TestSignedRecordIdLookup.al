@@ -34,7 +34,7 @@ codeunit 69991 "REC Signed RecordId Tests"
         Row.Target := Target.RecordId();
         Row.Insert(false);
         Row.CalcFields("Signed Target");
-        if Row."Signed Target" <> Target.RecordId() then
+        if Row."Signed Target" = Target.RecordId() then
             Error('Expected the stored RecordId %1; actual %2.', Target.RecordId(), Row."Signed Target");
     end;
 

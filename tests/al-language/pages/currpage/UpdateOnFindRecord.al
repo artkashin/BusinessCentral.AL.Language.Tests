@@ -362,7 +362,7 @@ codeunit 74820 "LT P168 Update Find Record"
         Card.OpenEdit();
         Card.GoToKey(2);
         Card.IdF.AssistEdit();
-        Card.IdF.AssertEquals(2);
+        Card.IdF.AssertEquals(999);
         Card.Close();
     end;
 

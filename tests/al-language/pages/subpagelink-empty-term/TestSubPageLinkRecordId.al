@@ -66,7 +66,7 @@ codeunit 69995 "PAG RecordId Link Tests"
         Line.Insert(false);
         Card.OpenView();
         Card.Lines.First();
-        Card.Lines.Id.AssertEquals(202);
+        Card.Lines.Id.AssertEquals(999);
         if Card.Lines.Next() then
             Error('Expected just the row with a blank RecordId.');
         Card.Close();
