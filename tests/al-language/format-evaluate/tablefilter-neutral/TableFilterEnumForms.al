@@ -1020,8 +1020,8 @@ codeunit 95454 "LT R6951 Tests"
             Error('Expected one selected row; actual %1.', Ref.Count());
         Ref.FindFirst();
         Fld := Ref.Field(Row.FieldNo("Entry No."));
-        if Format(Fld.Value()) <> '303' then
-            Error('Expected selected key 303; actual %1.', Fld.Value());
+        if Format(Fld.Value()) <> '101' then
+            Error('MUTATION: expected excluded key 101; actual %1.', Fld.Value());
         Ref.Close();
     end;
 }
