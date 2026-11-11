@@ -728,6 +728,39 @@ codeunit 73549 "LT P130 Date Filters"
         Observer.Expect('row', '2024-03-26T00:00:00Z|late');
         Observer.Verify();
     end;
+
+    // BC Documentation: https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/jsonvalue/jsonvalue-asdatetime-method
+    [Test]
+    procedure Record_Insert_JsonMinimumUtcDateTime_ReadsBackBlank()
+    var
+        Buffer: Record "LT P130 Filter Row" temporary;
+        Row: Record "LT P130 Filter Row";
+        Payload: JsonObject;
+        Token: JsonToken;
+    begin
+        Initialize();
+
+        Payload.ReadFrom('{"stamp":"0001-01-01T00:00:00Z"}');
+        Payload.Get('stamp', Token);
+        Buffer.Id := 7;
+        Buffer.Dtm := Token.AsValue().AsDateTime();
+        Buffer.Insert();
+
+        Row.TransferFields(Buffer);
+        Row.Insert();
+        Clear(Row);
+        Row.Get(7);
+        if StrSubstNo('%1|%2', Row.Id, Format(Row.Dtm, 0, 9)) <> '7|' then
+            Error('Expected row 7 with a blank DateTime. Got row %1 with DateTime %2.',
+                Row.Id, Format(Row.Dtm, 0, 9));
+    end;
+
+    local procedure Initialize()
+    var
+        Row: Record "LT P130 Filter Row";
+    begin
+        Row.DeleteAll();
+    end;
 }
 
 // al-runner issue 5689: tables with a Time and a DateTime field in the primary key (object ids 88000 and 88001).
