@@ -545,4 +545,40 @@ codeunit 93813 "LT Y71 Failed Insert Modify"
         Obs.Verify();
     end;
 
+    [Test]
+    procedure Record_Modify_AfterDuplicateInsertWithRekeyedCopy_WritesTarget()
+    var
+        Source: Record "LT Y71 MI Tab";
+        Target: Record "LT Y71 MI Tab";
+    begin
+        Initialize();
+
+        Source."No." := 'SOURCE';
+        Source.Qty := 41;
+        Source.Insert();
+        Target."No." := 'TARGET';
+        Target.Qty := 12;
+        Target.Insert();
+        Commit();
+
+        Source.Get('SOURCE');
+        Target := Source;
+        Target."No." := 'TARGET';
+        if Target.Insert() then
+            Error('Expected the target key to exist.');
+        Target.Modify();
+
+        Target.Get('TARGET');
+        if Target.Qty <> 41 then
+            Error('Expected the target quantity to be 41. Got %1.', Target.Qty);
+    end;
+
+    local procedure Initialize()
+    var
+        Row: Record "LT Y71 MI Tab";
+        BlobRow: Record "LT Y71 MI Blob Tab";
+    begin
+        Row.DeleteAll();
+        BlobRow.DeleteAll();
+    end;
 }

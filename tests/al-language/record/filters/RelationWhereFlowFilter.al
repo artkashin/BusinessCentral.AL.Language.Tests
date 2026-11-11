@@ -393,6 +393,34 @@ codeunit 72433 "LT RelFF Where Flowfilter"
                 exit(Doc."Own Equals Want");
         end;
     end;
+
+    [Test]
+    procedure Record_Validate_SourceFlowFilterUnset_AcceptsExistingNonDefaultKind()
+    var
+        Target: Record "LT RelFF Target";
+        Source: Record "REC Source FlowFilter Row";
+    begin
+        Initialize();
+
+        Target.Code := 'OTHER';
+        Target.Kind := 'K2';
+        Target.Insert();
+
+        Source.Validate("Target Code", 'OTHER');
+        if Source."Target Code" <> 'OTHER' then
+            Error('Expected the existing target OTHER. Got %1.', Source."Target Code");
+    end;
+
+    local procedure Initialize()
+    var
+        Target: Record "LT RelFF Target";
+        OldSource: Record "LT RelFF Source";
+        Source: Record "REC Source FlowFilter Row";
+    begin
+        Target.DeleteAll();
+        OldSource.DeleteAll();
+        Source.DeleteAll();
+    end;
 }
 
 // local object: the test checks a TableRelation whose where() names FlowFields of the related table (al-runner issue 6979).
@@ -471,6 +499,27 @@ table 95785 "REC RelFF Document"
         field(7; "Active True"; Code[20]) { TableRelation = "REC RelFF District" where(Active = const(true)); }
         field(8; "Own Equals Want"; Code[20]) { TableRelation = "REC RelFF District" where("Own Group" = field("Want Own")); }
         field(9; "Want Own"; Boolean) { }
+    }
+
+    keys
+    {
+        key(PK; Id) { Clustered = true; }
+    }
+}
+
+// local object: the TableRelation with a source-side FlowFilter is the behavior under test.
+table 67998 "REC Source FlowFilter Row"
+{
+    DataClassification = SystemMetadata;
+
+    fields
+    {
+        field(1; Id; Integer) { }
+        field(2; "Kind Filter"; Code[10]) { FieldClass = FlowFilter; }
+        field(3; "Target Code"; Code[10])
+        {
+            TableRelation = "LT RelFF Target".Code where(Kind = field("Kind Filter"));
+        }
     }
 
     keys
