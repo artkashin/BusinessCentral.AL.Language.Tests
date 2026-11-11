@@ -421,6 +421,42 @@ codeunit 72433 "LT RelFF Where Flowfilter"
         OldSource.DeleteAll();
         Source.DeleteAll();
     end;
+
+    [Test]
+    procedure Record_Validate_SourceFlowFilterExactMatch_AcceptsTarget()
+    var
+        Target: Record "LT RelFF Target";
+        Source: Record "REC Source FlowFilter Row";
+    begin
+        Initialize();
+
+        Target.Code := 'OTHER';
+        Target.Kind := 'K2';
+        Target.Insert();
+        Source.SetRange("Kind Filter", 'K2');
+
+        Source.Validate("Target Code", 'OTHER');
+        if Source."Target Code" <> 'OTHER' then
+            Error('Expected the matching target OTHER. Got %1.', Source."Target Code");
+    end;
+
+    [Test]
+    procedure Record_Validate_SourceFlowFilterMismatch_RejectsTarget()
+    var
+        Target: Record "LT RelFF Target";
+        Source: Record "REC Source FlowFilter Row";
+    begin
+        Initialize();
+
+        Target.Code := 'OTHER';
+        Target.Kind := 'K2';
+        Target.Insert();
+        Source.SetRange("Kind Filter", 'K1');
+
+        asserterror Source.Validate("Target Code", 'OTHER');
+        if not GetLastErrorText().Contains('cannot be found in the related table') then
+            Error('Expected a relation error. Got %1.', GetLastErrorText());
+    end;
 }
 
 // local object: the test checks a TableRelation whose where() names FlowFields of the related table (al-runner issue 6979).
