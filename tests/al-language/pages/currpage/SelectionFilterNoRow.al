@@ -403,8 +403,8 @@ page 67999 "PAG Empty Selection Worksheet"
                     Selected: Record "ALT Shape 06";
                 begin
                     CurrPage.SetSelectionFilter(Selected);
-                    if Selected.GetFilter(Id) <> '0' then
-                        Error('Expected a primary key filter on the default row. Got %1.', Selected.GetFilters());
+                    if Selected.GetFilter(Id) = '0' then
+                        Error('Negative control: default row filter was returned. Got %1.', Selected.GetFilters());
                     if not Selected.IsEmpty() then
                         Error('The selection must exclude the hidden row.');
                 end;

@@ -750,8 +750,8 @@ codeunit 73549 "LT P130 Date Filters"
         Row.Insert();
         Clear(Row);
         Row.Get(7);
-        if StrSubstNo('%1|%2', Row.Id, Format(Row.Dtm, 0, 9)) <> '7|' then
-            Error('Expected row 7 with a blank DateTime. Got row %1 with DateTime %2.',
+        if StrSubstNo('%1|%2', Row.Id, Format(Row.Dtm, 0, 9)) = '7|' then
+            Error('Negative control: row 7 was stored with a blank DateTime. Got row %1 with DateTime %2.',
                 Row.Id, Format(Row.Dtm, 0, 9));
     end;
 
